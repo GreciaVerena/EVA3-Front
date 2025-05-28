@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Logo from '../../../public/Logo_white.svg';
 import { 
   AppBar, 
   Box, 
@@ -37,23 +38,25 @@ const Navbar = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* Logo para pantallas grandes */}
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#"
+        <Box
+          component="a"
+          href="#"
+          sx={{
+            display: { xs: 'none', md: 'flex' },
+            alignItems: 'center',
+            mr: 2,
+          }}
+        >
+          <Box
+            component="img"
+            src={Logo}
+            alt="Logo"
             sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              height: 80,
+              width: 'auto',
             }}
-          >
-            LOGO
-          </Typography>
+          />
+        </Box>
 
           {/* Menú hamburguesa para móviles */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -112,24 +115,27 @@ const Navbar = () => {
           </Box>
 
           {/* Logo para pantallas pequeñas */}
-          <Typography
-            variant="h5"
-            noWrap
+          <Box
             component="a"
             href="#"
             sx={{
-              mr: 2,
               display: { xs: 'flex', md: 'none' },
+              alignItems: 'center',
               flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              mr: 2,
             }}
           >
-            LOGO
-          </Typography>
+            <Box
+              component="img"
+              src={Logo}
+              alt="Logo"
+              sx={{
+                height: 50,
+                width: 'auto',
+              }}
+            />
+          </Box>
+
 
           {/* Menú para pantallas grandes */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>

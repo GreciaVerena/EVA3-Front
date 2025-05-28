@@ -24,7 +24,7 @@ const Hero = () => {
                                     mb: 2
                                 }}
                             >
-                                Título Principal
+                                TEJELANAS VIVI
                             </Typography>
                             
                             <Typography 
@@ -35,7 +35,7 @@ const Hero = () => {
                                     opacity: 0.9
                                 }}
                             >
-                                Subtítulo descriptivo de tu aplicación con una frase que capture la atención de tus usuarios.
+                                Descubre el arte de tejer a mano: productos únicos, hechos con pasión y dedicados a tu estilo.
                             </Typography>
                             
                             <Box sx={{ display: 'flex', gap: 2, justifyContent: { xs: 'center', md: 'flex-start' } }}>
