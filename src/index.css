@@ -1,11 +1,17 @@
 :root {
+  /* Paleta de colores de ColorHunt */
+  --color-light-beige: #F8EDE3;
+  --color-medium-beige: #DFD3C3;
+  --color-dark-beige: #D0B8A8;
+  --color-brown: #8D493A;
+
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #333333;
+  background-color: var(--color-light-beige);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,24 +21,27 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--color-brown);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #A05C4D; /* Versión más clara del marrón principal */
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
+  display: block; /* Cambiado de flex a block */
+  min-width: 100%; /* Ahora ocupa el 100% del ancho */
   min-height: 100vh;
+  background-color: var(--color-light-beige);
+  color: #333333;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: var(--color-brown);
 }
 
 button {
@@ -42,27 +51,42 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--color-brown);
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  background-color: #A05C4D; /* Versión más clara del marrón principal */
+  border-color: var(--color-dark-beige);
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 3px solid var(--color-dark-beige);
 }
 
+/* Eliminar el cambio de tema oscuro/claro ya que estamos usando una paleta específica */
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #333333;
+    background-color: var(--color-light-beige);
   }
   a:hover {
-    color: #747bff;
+    color: #A05C4D; /* Versión más clara del marrón principal */
   }
   button {
-    background-color: #f9f9f9;
+    background-color: var(--color-brown);
+    color: white;
+  }
+}
+
+/* Para mantener la legibilidad en modo oscuro si el usuario lo tiene configurado */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #333333;
+    background-color: var(--color-light-beige);
+  }
+  body {
+    background-color: var(--color-light-beige);
   }
 }
