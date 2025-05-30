@@ -1,9 +1,25 @@
 import React from 'react';
-import { Box, Container, Typography, Button, Grid } from '@mui/material';
+import { Box, Container, Typography, Button } from '@mui/material';
 // Importar solo la imagen de fondo principal
 import fondoImage from '../../assets/fondo.jpg';
 
 const Hero = () => {
+    // Función para desplazamiento suave a preguntas frecuentes
+    const scrollToFAQ = () => {
+        const faqSection = document.getElementById('faq');
+        if (faqSection) {
+            const navbarHeight = 80; // Altura aproximada del navbar
+            const additionalOffset = 20; // Espacio adicional
+            const sectionTop = faqSection.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = sectionTop - navbarHeight - additionalOffset;
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    };
+
     return (
         <Box 
             id="home"
@@ -41,12 +57,12 @@ const Hero = () => {
                         component="h1" 
                         className="text-brown"
                         sx={{ 
-                            fontFamily: "'Playfair Display', 'Times New Roman', serif", // Fuente elegante
+                            fontFamily: "'Playfair Display', 'Times New Roman', serif", 
                             fontWeight: 'bold',
                             fontStyle: 'italic',
                             letterSpacing: '0.5px',
                             mb: 2,
-                            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)', // Sombra como en el footer
+                            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)', 
                             fontSize: { xs: '2.5rem', md: '3.5rem' },
                             color: 'var(--color-brown)',
                             position: 'relative',
@@ -85,11 +101,11 @@ const Hero = () => {
                         Descubre el arte de tejer a mano: productos únicos, hechos con pasión y dedicados a tu estilo.
                     </Typography>
                     
-                    <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                         <Button 
                             variant="contained" 
                             size="large"
-                            className="btn-primary"
+                            onClick={scrollToFAQ}
                             sx={{
                                 backgroundColor: 'var(--color-brown)',
                                 fontWeight: 'bold',
@@ -103,29 +119,7 @@ const Hero = () => {
                                 transition: 'all 0.3s'
                             }}
                         >
-                            Comenzar
-                        </Button>
-                        
-                        <Button 
-                            variant="outlined" 
-                            size="large"
-                            sx={{
-                                borderColor: 'var(--color-brown)',
-                                borderWidth: 2,
-                                color: 'var(--color-brown)',
-                                fontWeight: 'bold',
-                                px: 4,
-                                py: 1.5,
-                                '&:hover': {
-                                    borderColor: '#A05C4D',
-                                    backgroundColor: 'var(--color-medium-beige)',
-                                    transform: 'translateY(-3px)',
-                                    boxShadow: '0 4px 8px rgba(141, 73, 58, 0.15)'
-                                },
-                                transition: 'all 0.3s'
-                            }}
-                        >
-                            Saber más
+                            Preguntas Frecuentes
                         </Button>
                     </Box>
                 </Box>

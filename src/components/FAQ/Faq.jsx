@@ -45,7 +45,7 @@ const handleChange = (panel) => (event, isExpanded) => {
 };
 
 return (
-    <Box sx={{ backgroundColor: "white", py: 8 }}>
+    <Box id="faq" sx={{ backgroundColor: "white", py: 8 }}>
     <Container maxWidth="md" sx={{ py: 2 }}>
         <Box
         sx={{
