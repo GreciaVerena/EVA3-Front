@@ -66,7 +66,7 @@ export default function ContactForm() {
             }}
           >
             <Typography variant="h5" fontWeight={600} textAlign="center">
-              ¡Contactanos!
+              ¡Contáctanos!
             </Typography>
             <TextField
               label="Nombre"

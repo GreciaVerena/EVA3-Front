@@ -119,7 +119,7 @@ const Hero = () => {
                                 transition: 'all 0.3s'
                             }}
                         >
-                            Preguntas Frecuentes
+                            Saber más
                         </Button>
                     </Box>
                 </Box>
