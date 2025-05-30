@@ -2,11 +2,10 @@ import React from 'react';
 import { Box, Container, Typography, IconButton, Stack, Divider } from '@mui/material';
 import { 
   Facebook as FacebookIcon, 
-  Twitter as TwitterIcon, 
-  Instagram as InstagramIcon, 
-  LinkedIn as LinkedInIcon,
-  GitHub as GitHubIcon
+  Instagram as InstagramIcon,
+  WhatsApp as WhatsAppIcon
 } from '@mui/icons-material';
+import Logo from '../../../public/Logo_black.svg'; // Asegúrate que la ruta sea correcta
 
 const Footer = () => {
   return (
@@ -21,12 +20,48 @@ const Footer = () => {
       className="bg-brown"
     >
       <Container maxWidth="lg">
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'space-between', alignItems: 'center'}}>
-          <Typography variant="h6" component="div" sx={ { fontWeight: 'bold', fontStyle:'italic', mb: { xs: 2, md: 0 } }}>
+        {/* Estructura de tres columnas */}
+        <Box sx={{ 
+          display: 'flex', 
+          flexDirection: { xs: 'column', md: 'row' }, 
+          justifyContent: 'space-between', 
+          alignItems: 'center',
+          gap: { xs: 3, md: 0 }
+        }}>
+          {/* Izquierda - Nombre */}
+          <Typography 
+            variant="h6" 
+            component="div" 
+            sx={{ 
+              fontWeight: 'bold', 
+              fontStyle:'italic', 
+              mb: { xs: 0, md: 0 },
+              textAlign: { xs: 'center', md: 'left' }
+            }}
+          >
             TEJELANAS VIVI
           </Typography>
           
-          <Stack direction="row" spacing={1}>
+          {/* Centro - Logo */}
+          <Box 
+            component="img"
+            src={Logo}
+            alt="Logo Tejelanas VIVI"
+            sx={{
+              height: { xs: '60px', md: '70px' },
+              display: 'block',
+              mx: 'auto'
+            }}
+          />
+          
+          {/* Derecha - Iconos de redes sociales */}
+          <Stack 
+            direction="row" 
+            spacing={1}
+            sx={{
+              justifyContent: { xs: 'center', md: 'flex-end' }
+            }}
+          >
             <IconButton 
               aria-label="Facebook" 
               color="inherit" 
@@ -54,6 +89,20 @@ const Footer = () => {
               }}
             >
               <InstagramIcon />
+            </IconButton>
+            <IconButton 
+              aria-label="WhatsApp" 
+              color="inherit" 
+              href="https://wa.me/+56976322314" // Reemplaza con tu número real
+              target="_blank"
+              sx={{ 
+                '&:hover': { 
+                  backgroundColor: 'var(--color-dark-beige)',
+                  color: 'var(--color-brown)' 
+                } 
+              }}
+            >
+              <WhatsAppIcon />
             </IconButton>
           </Stack>
         </Box>
