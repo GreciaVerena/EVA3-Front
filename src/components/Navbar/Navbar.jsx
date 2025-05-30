@@ -12,7 +12,13 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const pages = ['Home', 'Productos', 'Nosotros', 'Contacto'];
+// Define las secciones y sus IDs correspondientes
+const navItems = [
+  { name: 'Home', id: 'home' },
+  { name: 'Productos', id: 'productos' },
+  { name: 'Nosotros', id: 'nosotros' },
+  { name: 'Contacto', id: 'contacto' }
+];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -25,9 +31,26 @@ const Navbar = () => {
     setAnchorElNav(null);
   };
 
+  // Función para desplazamiento suave mejorada con offset
+  const scrollToSection = (sectionId) => {
+    handleCloseNavMenu();
+    
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const navbarHeight = 80; // Altura aproximada del navbar en píxeles
+      const sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = sectionTop - navbarHeight;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <AppBar 
-      position="static"
+      position="sticky"
       className="bg-brown"
       sx={{ 
         backgroundColor: 'var(--color-brown)',
@@ -37,25 +60,26 @@ const Navbar = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* Logo para pantallas grandes */}
-        <Box
-          component="a"
-          href="#"
-          sx={{
-            display: { xs: 'none', md: 'flex' },
-            alignItems: 'center',
-            mr: 2,
-          }}
-        >
           <Box
-            component="img"
-            src="/Logo_white.svg"
-            alt="Logo"
+            component="a"
+            onClick={() => scrollToSection('home')}
             sx={{
-              height: 80,
-              width: 'auto',
+              display: { xs: 'none', md: 'flex' },
+              alignItems: 'center',
+              mr: 2,
+              cursor: 'pointer'
             }}
-          />
-        </Box>
+          >
+            <Box
+              component="img"
+              src="/Logo_white.svg"
+              alt="Logo"
+              sx={{
+                height: 80,
+                width: 'auto',
+              }}
+            />
+          </Box>
 
           {/* Menú hamburguesa para móviles */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -96,10 +120,10 @@ const Navbar = () => {
                 },
               }}
             >
-              {pages.map((page) => (
+              {navItems.map((item) => (
                 <MenuItem 
-                  key={page} 
-                  onClick={handleCloseNavMenu}
+                  key={item.name} 
+                  onClick={() => scrollToSection(item.id)}
                   sx={{
                     color: 'var(--color-brown)',
                     '&:hover': {
@@ -107,7 +131,7 @@ const Navbar = () => {
                     }
                   }}
                 >
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">{item.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -116,12 +140,13 @@ const Navbar = () => {
           {/* Logo para pantallas pequeñas */}
           <Box
             component="a"
-            href="#"
+            onClick={() => scrollToSection('home')}
             sx={{
               display: { xs: 'flex', md: 'none' },
               alignItems: 'center',
               flexGrow: 1,
               mr: 2,
+              cursor: 'pointer'
             }}
           >
             <Box
@@ -135,13 +160,12 @@ const Navbar = () => {
             />
           </Box>
 
-
           {/* Menú para pantallas grandes */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {navItems.map((item) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={item.name}
+                onClick={() => scrollToSection(item.id)}
                 sx={{ 
                   my: 2, 
                   color: 'white', 
@@ -152,7 +176,7 @@ const Navbar = () => {
                   }
                 }}
               >
-                {page}
+                {item.name}
               </Button>
             ))}
           </Box>

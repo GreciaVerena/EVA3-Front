@@ -33,10 +33,30 @@ const Footer = () => {
             variant="h6" 
             component="div" 
             sx={{ 
-              fontWeight: 'bold', 
-              fontStyle:'italic', 
+              fontFamily: "'Playfair Display', 'Times New Roman', serif", // Fuente elegante
+              fontWeight: 'bold',
+              fontStyle: 'italic',
+              letterSpacing: '0.5px',
               mb: { xs: 0, md: 0 },
-              textAlign: { xs: 'center', md: 'left' }
+              textAlign: { xs: 'center', md: 'left' },
+              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)', // Sombra sutil
+              fontSize: { xs: '1.3rem', md: '1.5rem' },
+              color: 'white',
+              position: 'relative',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                bottom: '-5px',
+                left: { xs: '50%', md: '0' },
+                transform: { xs: 'translateX(-50%)', md: 'translateX(0)' },
+                width: '50px',
+                height: '2px',
+                backgroundColor: 'var(--color-dark-beige)',
+                transition: 'width 0.3s'
+              },
+              '&:hover::after': {
+                width: { xs: '80px', md: '100px' }
+              }
             }}
           >
             TEJELANAS VIVI

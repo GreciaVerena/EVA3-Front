@@ -1,105 +1,137 @@
 import React from 'react';
 import { Box, Container, Typography, Button, Grid } from '@mui/material';
+// Importar solo la imagen de fondo principal
+import fondoImage from '../../assets/fondo.jpg';
 
 const Hero = () => {
     return (
         <Box 
-            className="bg-light-beige"
+            id="home"
             sx={{
-                py: { xs: 6, md: 10 },
+                py: { xs: 10, md: 12 },
                 position: 'relative',
-                overflow: 'hidden'
+                overflow: 'hidden',
+                backgroundImage: `url(${fondoImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(248, 240, 229, 0.85)', // Overlay con color beige claro semi-transparente
+                    zIndex: 1
+                }
             }}
         >
-            <Container maxWidth="lg">
-                <Grid container spacing={4} alignItems="center">
-                    <Grid item xs={12} md={6}>
-                        <Box sx={{ textAlign: { xs: 'center', md: 'left' }, mb: { xs: 4, md: 0 } }}>
-                            <Typography 
-                                variant="h2" 
-                                component="h1" 
-                                className="text-brown"
-                                sx={{ 
-                                    fontWeight: 'bold',
-                                    mb: 2
-                                }}
-                            >
-                                TEJELANAS VIVI
-                            </Typography>
-                            
-                            <Typography 
-                                variant="h5" 
-                                sx={{ 
-                                    mb: 4,
-                                    color: 'var(--color-brown)',
-                                    opacity: 0.9
-                                }}
-                            >
-                                Descubre el arte de tejer a mano: productos únicos, hechos con pasión y dedicados a tu estilo.
-                            </Typography>
-                            
-                            <Box sx={{ display: 'flex', gap: 2, justifyContent: { xs: 'center', md: 'flex-start' } }}>
-                                <Button 
-                                    variant="contained" 
-                                    size="large"
-                                    className="btn-primary"
-                                    sx={{
-                                        backgroundColor: 'var(--color-brown)',
-                                        '&:hover': {
-                                            backgroundColor: '#A05C4D'
-                                        }
-                                    }}
-                                >
-                                    Comenzar
-                                </Button>
-                                
-                                <Button 
-                                    variant="outlined" 
-                                    size="large"
-                                    sx={{
-                                        borderColor: 'var(--color-brown)',
-                                        color: 'var(--color-brown)',
-                                        '&:hover': {
-                                            borderColor: '#A05C4D',
-                                            backgroundColor: 'var(--color-medium-beige)',
-                                        }
-                                    }}
-                                >
-                                    Saber más
-                                </Button>
-                            </Box>
-                        </Box>
-                    </Grid>
+            <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
+                <Box 
+                    sx={{ 
+                        textAlign: 'center', 
+                        maxWidth: '800px', 
+                        mx: 'auto', 
+                        py: { xs: 6, md: 8 } 
+                    }}
+                >
+                    <Typography 
+                        variant="h2" 
+                        component="h1" 
+                        className="text-brown"
+                        sx={{ 
+                            fontFamily: "'Playfair Display', 'Times New Roman', serif", // Fuente elegante
+                            fontWeight: 'bold',
+                            fontStyle: 'italic',
+                            letterSpacing: '0.5px',
+                            mb: 2,
+                            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)', // Sombra como en el footer
+                            fontSize: { xs: '2.5rem', md: '3.5rem' },
+                            color: 'var(--color-brown)',
+                            position: 'relative',
+                            '&::after': {
+                                content: '""',
+                                position: 'absolute',
+                                bottom: '-10px',
+                                left: '50%',
+                                transform: 'translateX(-50%)',
+                                width: '80px',
+                                height: '3px',
+                                backgroundColor: 'var(--color-dark-beige)',
+                                transition: 'width 0.3s'
+                            },
+                            '&:hover::after': {
+                                width: '150px'
+                            }
+                        }}
+                    >
+                        TEJELANAS VIVI
+                    </Typography>
                     
-                    <Grid item xs={12} md={6}>
-                        <Box 
-                            className="shadow-custom"
+                    <Typography 
+                        variant="h5" 
+                        sx={{ 
+                            mb: 4,
+                            color: 'var(--color-brown)',
+                            opacity: 0.9,
+                            fontWeight: '500',
+                            fontSize: { xs: '1.2rem', md: '1.5rem' },
+                            lineHeight: 1.5,
+                            maxWidth: '700px',
+                            mx: 'auto'
+                        }}
+                    >
+                        Descubre el arte de tejer a mano: productos únicos, hechos con pasión y dedicados a tu estilo.
+                    </Typography>
+                    
+                    <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
+                        <Button 
+                            variant="contained" 
+                            size="large"
+                            className="btn-primary"
                             sx={{
-                                backgroundColor: 'white',
-                                borderRadius: 2,
-                                p: 3,
-                                height: '100%',
-                                minHeight: '300px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                border: '1px solid var(--color-medium-beige)'
+                                backgroundColor: 'var(--color-brown)',
+                                fontWeight: 'bold',
+                                px: 4,
+                                py: 1.5,
+                                '&:hover': {
+                                    backgroundColor: '#A05C4D',
+                                    transform: 'translateY(-3px)',
+                                    boxShadow: '0 4px 8px rgba(141, 73, 58, 0.3)'
+                                },
+                                transition: 'all 0.3s'
                             }}
                         >
-                            {/* Aquí puedes colocar una imagen o un componente */}
-                            <Typography 
-                                variant="h4" 
-                                className="text-dark-beige"
-                                sx={{ textAlign: 'center' }}
-                            >
-                                Imagen o Contenido Destacado
-                            </Typography>
-                        </Box>
-                    </Grid>
-                </Grid>
+                            Comenzar
+                        </Button>
+                        
+                        <Button 
+                            variant="outlined" 
+                            size="large"
+                            sx={{
+                                borderColor: 'var(--color-brown)',
+                                borderWidth: 2,
+                                color: 'var(--color-brown)',
+                                fontWeight: 'bold',
+                                px: 4,
+                                py: 1.5,
+                                '&:hover': {
+                                    borderColor: '#A05C4D',
+                                    backgroundColor: 'var(--color-medium-beige)',
+                                    transform: 'translateY(-3px)',
+                                    boxShadow: '0 4px 8px rgba(141, 73, 58, 0.15)'
+                                },
+                                transition: 'all 0.3s'
+                            }}
+                        >
+                            Saber más
+                        </Button>
+                    </Box>
+                </Box>
             </Container>
             
-            {/* Elementos decorativos */}
+            {/* Elementos decorativos - los mantenemos para dar más profundidad */}
             <Box 
                 sx={{
                     position: 'absolute',
@@ -110,7 +142,7 @@ const Hero = () => {
                     opacity: 0.5,
                     top: '-100px',
                     right: '-50px',
-                    zIndex: 0
+                    zIndex: 1
                 }}
             />
             
@@ -124,7 +156,7 @@ const Hero = () => {
                     opacity: 0.3,
                     bottom: '-70px',
                     left: '-70px',
-                    zIndex: 0
+                    zIndex: 1
                 }}
             />
         </Box>

@@ -26,7 +26,7 @@ useEffect(() => {
 }, []);
 
 return (
-    <Box sx={{ backgroundColor: "#f9f9f9", py: 8 }}>
+    <Box id="nosotros" sx={{ backgroundColor: "#f9f9f9", py: 8 }}>
     <Container maxWidth="lg">
         <Typography
         variant="h3"

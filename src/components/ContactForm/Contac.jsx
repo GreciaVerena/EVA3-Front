@@ -47,70 +47,72 @@ export default function ContactForm() {
 
   return (
     <Container maxWidth="sm" sx={{ my: 6}}>
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <Box
-          sx={{
-            p: 4,
-            mt: 6,
-            borderRadius: 4,
-            boxShadow: 3,
-            bgcolor: 'background.paper',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 3,
-          }}
+      <Box id="contacto" sx={{ /* tus estilos */ }}>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          <Typography variant="h5" fontWeight={600} textAlign="center">
-            ¡Contactanos!
-          </Typography>
-          <TextField
-            label="Nombre"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            error={!!errors.name}
-            helperText={errors.name}
-            fullWidth
-          />
-          <TextField
-            label="Correo electrónico"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            error={!!errors.email}
-            helperText={errors.email}
-            fullWidth
-          />
-          <TextField
-            label="Mensaje"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            error={!!errors.message}
-            helperText={errors.message}
-            multiline
-            rows={4}
-            fullWidth
-          />
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            onClick={handleSubmit}
+          <Box
+            sx={{
+              p: 4,
+              mt: 6,
+              borderRadius: 4,
+              boxShadow: 3,
+              bgcolor: 'background.paper',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 3,
+            }}
           >
-            Enviar
-          </Button>
-        </Box>
-      </motion.div>
-      <Snackbar open={open} autoHideDuration={4000} onClose={() => setOpen(false)}>
-        <Alert severity="success" variant="filled">
-          ¡Mensaje enviado correctamente!
-        </Alert>
-      </Snackbar>
+            <Typography variant="h5" fontWeight={600} textAlign="center">
+              ¡Contactanos!
+            </Typography>
+            <TextField
+              label="Nombre"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              error={!!errors.name}
+              helperText={errors.name}
+              fullWidth
+            />
+            <TextField
+              label="Correo electrónico"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              error={!!errors.email}
+              helperText={errors.email}
+              fullWidth
+            />
+            <TextField
+              label="Mensaje"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              error={!!errors.message}
+              helperText={errors.message}
+              multiline
+              rows={4}
+              fullWidth
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              onClick={handleSubmit}
+            >
+              Enviar
+            </Button>
+          </Box>
+        </motion.div>
+        <Snackbar open={open} autoHideDuration={4000} onClose={() => setOpen(false)}>
+          <Alert severity="success" variant="filled">
+            ¡Mensaje enviado correctamente!
+          </Alert>
+        </Snackbar>
+      </Box>
     </Container>
   );
 }
