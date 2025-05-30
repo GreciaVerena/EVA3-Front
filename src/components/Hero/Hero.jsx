@@ -98,7 +98,7 @@ const Hero = () => {
                             mx: 'auto'
                         }}
                     >
-                        Descubre el arte de tejer a mano: productos únicos, hechos con pasión y dedicados a tu estilo.
+                        Del corazón a tus manos, tejidos artesanales creados por una mujer apasionada por transformar hilos en belleza.
                     </Typography>
                     
                     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
