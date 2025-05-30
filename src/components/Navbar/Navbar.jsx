@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Logo from '../../../public/Logo_white.svg';
 import { 
   AppBar, 
   Box, 
@@ -49,7 +48,7 @@ const Navbar = () => {
         >
           <Box
             component="img"
-            src={Logo}
+            src="/Logo_white.svg"
             alt="Logo"
             sx={{
               height: 80,
@@ -127,7 +126,7 @@ const Navbar = () => {
           >
             <Box
               component="img"
-              src={Logo}
+              src="/Logo_white.svg"
               alt="Logo"
               sx={{
                 height: 50,

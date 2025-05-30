@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
 Accordion,
 AccordionDetails,
@@ -12,77 +12,73 @@ useTheme,
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 
-// Datos de ejemplo para el FAQ
-const faqData = [
-{
-    id: 1,
-    question: "¿Cuáles son los métodos de pago aceptados?",
-    answer:
-    "Aceptamos tarjetas de crédito/débito (Visa, MasterCard, American Express), PayPal, transferencias bancarias y pagos móviles como Apple Pay y Google Pay.",
-},
-{
-    id: 2,
-    question: "¿Cuánto tiempo tarda el envío?",
-    answer:
-    "El tiempo de envío depende de tu ubicación. Generalmente, los envíos nacionales tardan de 3 a 5 días hábiles, mientras que los envíos internacionales pueden tardar de 7 a 14 días hábiles.",
-},
-{
-    id: 3,
-    question: "¿Puedo devolver un producto?",
-    answer:
-    "Sí, ofrecemos una política de devolución de 30 días. Si no estás satisfecho con tu compra, puedes devolverla en su estado original dentro de los 30 días posteriores a la recepción para obtener un reembolso completo o un cambio.",
-},
-{
-    id: 4,
-    question: "¿Cómo puedo contactar al servicio al cliente?",
-    answer:
-    "Puedes contactar a nuestro equipo de servicio al cliente por correo electrónico a soporte@ejemplo.com, por teléfono al (123) 456-7890, o a través del chat en vivo disponible en nuestra página web de lunes a viernes de 9:00 AM a 6:00 PM.",
-},
-];
-
 export default function FAQ() {
 const theme = useTheme();
 const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 const [expanded, setExpanded] = useState(false);
+const [faqData, setFaqData] = useState([]);
 
+useEffect(() => {
+    fetch("https://www.clinicatecnologica.cl/ipss/tejelanasVivi/api/v1/faq/", {
+    headers: {
+        Authorization: "Bearer ipss.get",
+    },
+    })
+    .then((res) => res.json())
+    .then((data) => {
+        console.log("FAQ data:", data);
+        if (Array.isArray(data)) {
+        setFaqData(data);
+        } else if (Array.isArray(data.faq)) {
+        setFaqData(data.faq);
+        } else if (Array.isArray(data.data)) {
+        setFaqData(data.data);
+        } else {
+        setFaqData([]);
+        console.warn("La data FAQ no es un arreglo");
+        }
+    })
+    .catch((err) => console.error("Error cargando FAQ:", err));
+}, []);
 const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
 };
 
 return (
-    <Box sx={{ backgroundColor: 'white', py: 8}}> 
-        <Container maxWidth="md" sx={{ py: 2 }}>
+    <Box sx={{ backgroundColor: "white", py: 8 }}>
+    <Container maxWidth="md" sx={{ py: 2 }}>
         <Box
-            sx={{
+        sx={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            mb: 6
-            }}
+            mb: 6,
+        }}
         >
-            <QuestionAnswerIcon
+        <QuestionAnswerIcon
             sx={{
-                fontSize: 48,
-                color: "primary.main",
-                mb: 2,
+            fontSize: 48,
+            color: "primary.main",
+            mb: 2,
             }}
-            />
-            <Typography
+        />
+        <Typography
             variant="h2"
             component="h1"
             align="center"
             gutterBottom
             sx={{
-                fontSize: { xs: "2rem", md: "3rem" },
-                fontWeight: 700,
+            fontSize: { xs: "2rem", md: "3rem" },
+            fontWeight: 700,
             }}
-            >
+        >
             Preguntas Frecuentes
-            </Typography>
+        </Typography>
         </Box>
 
         <Box>
-            {faqData.map((item) => (
+        {Array.isArray(faqData) && faqData.length > 0 ? (
+            faqData.map((item) => (
             <Accordion
                 key={item.id}
                 expanded={expanded === item.id}
@@ -120,25 +116,29 @@ return (
                     color: expanded === item.id ? "primary.main" : "text.primary",
                     }}
                 >
-                    {item.question}
+                    {item.titulo}
                 </Typography>
                 </AccordionSummary>
-                <AccordionDetails sx={{py: 2, px: 3 }}>
+                <AccordionDetails sx={{ py: 2, px: 3 }}>
                 <Typography
                     variant="body1"
                     sx={{
-                    color: "text.secondary",
                     lineHeight: 1.7,
                     fontSize: { xs: "0.95rem", md: "1rem" },
                     }}
                 >
-                    {item.answer}
+                    {item.respuesta}
                 </Typography>
                 </AccordionDetails>
             </Accordion>
-            ))}
+            ))
+        ) : (
+            <Typography align="center" color="text.secondary">
+            No hay preguntas frecuentes para mostrar.
+            </Typography>
+        )}
         </Box>
-        </Container>
+    </Container>
     </Box>
 );
 }
