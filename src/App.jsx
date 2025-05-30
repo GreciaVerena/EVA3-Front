@@ -4,6 +4,7 @@ import Hero from './components/Hero/Hero.jsx'
 import Footer from './components/Footer/Footer.jsx'
 import ContactForm from './components/ContactForm/Contac.jsx'
 import FAQ from './components/FAQ/Faq.jsx';
+import Nosotros from './components/Nosotros/Nosotros.jsx'
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <>
       <Navbar />
       <Hero />
+      <Nosotros/>
       <FAQ/>
       <ContactForm/>
       <Footer />
