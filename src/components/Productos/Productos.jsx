@@ -62,9 +62,9 @@ export default function Productos() {
         {loading ? (
           <Typography variant="body1" align="center">Cargando productos...</Typography>
         ) : productos.length > 0 ? (
-          <Grid container spacing={4} alignItems="stretch" sx={{ mb: 10 }}>
+          <Grid container spacing={4} alignItems="stretch" sx={{ mb: 10, justifyContent: { xs: "center", sm: "flex-start" } }}>
             {productos.map((producto) => (
-              <Grid item xs={12} sm={6} md={4} key={producto.id} sx={{ display: 'flex' }}>
+              <Grid item xs={12} sm={6} md={4} key={producto.id} sx={{ display: 'flex', flex: 1,  minWidth: { xs: '100%', sm: '300px' }}}>
                 <Card
                   className="shadow-custom"
                   sx={{
